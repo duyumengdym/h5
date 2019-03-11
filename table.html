@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<title>form属性示例</title>
+	  <meta charset="UTF-8">
+	  <style >
+		  .box1{
+			  width: 490px;
+			  height: 120px;
+		  }
+		  .box2{
+			  width:490px;
+			  height:95px;
+		  }
+		  .xing{
+			  color: red;
+		  }
+		  input{
+			  margin-bottom: 3px;
+		  }
+
+	  </style>
+</head>
+<body>
+	<h1>毕业生信息</h1>
+	<form id="testform" method="get" action="">
+		<fieldset class="box1">
+			<legend class="xing">
+				学生信息
+			</legend>
+           <span>姓&nbsp;&nbsp;名&nbsp;</span><input type="text" name="name"  placeholder="请输入姓名" autocomplete="off"/><span class="xing">*</span><br/>
+		   <span>学&nbsp;&nbsp;号&nbsp;</span><input type="number" name="num1" placeholder="请输入学号" min="0" autocomplete="off"/><span class="xing">*</span><br/>
+		   <span>手&nbsp;&nbsp;机&nbsp;</span><input type="tel" name="p"  placeholder="请输入手机号" autocomplete="off"/><span class="xing">*</span><br/>
+		   <span>邮&nbsp;&nbsp;箱&nbsp;</span><input type="email" name="email"  placeholder="请输入邮箱地址" autocomplete="off"/><span class="xing">*</span><br/>
+        </fieldset>
+        <p></p>
+		<fieldset class="box2">
+			<legend class="xing">
+				录取情况
+			</legend>
+			<span>录取学校&nbsp;</span><input type="search" name="school"autocomplete="on" list="names"/><br/>
+			<datalist id="names">
+				<option>河北师范大学</option>
+				<option>河北科技大学</option>
+				<option>华北理工大学</option>
+				<option>北京大学</option>
+				<option>清华大学</option>
+			</datalist>			
+            <span>入学成绩&nbsp;</span><input type="number" name="num2" min="0" autocomplete="off"/><br/>
+            <span>入学时间&nbsp;</span><input type="date" name="date" autocomplete="off"/><br/>
+		</fieldset>
+		<p></p>
+		<input type="submit" value="提交"/>
+	</form>
+</body>
+</html>
+
+
