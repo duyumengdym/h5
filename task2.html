@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            padding:0;
+            margin:0;
+        }
+        ul{
+	        list-style: none;
+            width: 400px;
+            height: auto;
+            float: left;
+            margin:0px;
+            padding:0px;
+        }
+        .box{
+            width:400px;
+            height: auto;
+        }
+        #input1{
+            width: 195px;
+            height: 40px;
+            border-color: #e1af66;
+            border-radius: 5px;
+        }
+        #button{
+            width: 141px;
+            height: 37px;
+            text-align: center;
+            color: #94949f;
+            background-color: #e6e6e6;
+            border-color:#939393;
+            border-radius: 5px;
+        }
+        li{
+            float: left;
+            list-style: none;
+            margin-right: 10px;
+            margin-top: 10px;
+            background-color: #e0e0e0;
+        }
+        #delete{
+            float: right;
+            background-color: #e0e0e0;
+        }
+        #no{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+    <form>
+    <input type="text" name="sousuo" placeholder="请输入想查找的商品" id="input1"/>
+    <input type="submit" value="搜索" id="button"/>
+    </form>
+    <p>最近搜索</p>
+    <p id="no">无历史记录</p>
+    <ul id="searchlist"></ul>
+    <input type="button" value="X" id="delete"/>
+    </div>
+</body>
+<script>
+		window.onload=function(){
+			if(!window.localStorage){
+				alert("你的浏览器不支持locaStorage");
+			}else{
+                var btn=document.getElementById("button");
+                var add=document.getElementById("searchlist");
+                var del=document.getElementById("delete");
+                function fnDate(){
+                    var date=new Date();
+                    var year=date.getFullYear();
+                    var month=date.getMonth();
+                    var data=date.getDate();
+                    var hours=date.getHours();
+                    var minute=date.getMinutes();
+                    var second=date.getSeconds();
+                    var time=year+"-"+fnW((month+1))+"-"+fnW(data)+" "+fnW(hours)+":"+fnW(minute)+":"+fnW(second);
+                    return time;
+                }
+                function fnW(str){
+                    var num;
+                    str>10?num=str:num="0"+str;
+                    return num;
+                } 
+                if(localStorage.length==0){
+                    document.getElementById("no").style.display="block";
+                }
+                for(var i=0; i<localStorage.length; i++){
+					var key = localStorage.key(i);
+					var data = localStorage.getItem(key);
+                    var li1= document.createElement("li");
+                    li1.innerHTML=data;
+                    add.appendChild(li1);
+				}
+                btn.onclick = function(){
+                    document.getElementById("no").style.display="none";
+                    var text = document.getElementById("input1").value;
+                    var l=add.getElementsByTagName('li').length;
+                    var li2= document.createElement("li");
+                    var j=0;
+                    if(localStorage.length==0&&text!=""){
+                        li2.innerHTML=text;
+                        add.appendChild(li2);
+                        var str=fnDate();
+				        localStorage.setItem(str, text);
+				        localStorage.getItem(str);
+                        document.getElementById("input1").value="";
+                    }
+                    else if(localStorage.length==0&&text==""){
+                        window.confirm("请输入搜索内容！");
+                        document.getElementById("no").style.display="block";
+                    }
+                    else if(localStorage.length!=0&&text==""){
+                        window.confirm("请输入搜索内容！");
+                        document.getElementById("no").style.display="block";
+                    }
+                    else if(localStorage.length!=0&&text!="")
+                    {
+                    for(var i=0; i<localStorage.length; i++){
+					    var key = localStorage.key(i);
+					    var data = localStorage.getItem(key);
+                        if(text==data){
+                            j=1;
+                            break;
+                        }
+			     	}
+                    if(j==1){
+                        document.getElementById("input1").value="";
+                        window.confirm("搜索内容已经在历史记录里啦");
+                    }
+                    else{
+                            li2.innerHTML=text;
+                            add.appendChild(li2);
+                            var str=fnDate();
+				            localStorage.setItem(str, text);
+				            localStorage.getItem(str);
+                            document.getElementById("input1").value="";
+                    }
+                    }
+                }
+                del.onclick=function(){
+				if(window.confirm("是要全部清除吗？")){
+                    while(add.hasChildNodes())  
+                     {
+                        add.removeChild(add.firstChild);
+                     }
+					localStorage.clear();
+                    document.getElementById("no").style.display="block";
+				}
+			}	
+			}
+            }
+	</script>
+</html>
