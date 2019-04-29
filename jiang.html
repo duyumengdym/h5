@@ -38,7 +38,7 @@
 	context.fillStyle="#CCCCCC";
 	context.fillRect(0,0,400,200);
 	context.closePath();
-	canvas.onmousedown=function(){
+	canvas.onmousedown=function(e){
 		document.onmousemove=function(e){
 			context.globalCompositeOperation = "destination-out";
 			//鼠标涂抹
