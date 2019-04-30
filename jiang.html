@@ -40,6 +40,7 @@
 	context.closePath();
 	canvas.onmousedown=function(e){
 		document.onmousemove=function(e){
+			var e=e||window.event;
 			context.globalCompositeOperation = "destination-out";
 			//鼠标涂抹
 			context.lineWidth = 40;
