@@ -46,11 +46,11 @@
 		document.onmousemove=function(e){
 			context.globalCompositeOperation = "destination-out";
 			//鼠标涂抹
-			context.lineWidth = 40;
-			context.lineCap = "round";
 			context.beginPath();
-			context.lineTo(e.clientX-canvas.offsetLeft,e.clientY-canvas.offsetTop);
-			context.stroke();
+			context.arc(e.clientX-canvas.offsetLeft,e.clientY-canvas.offsetTop,30,0,Math.PI * 2);
+			context.closePath();
+			context.fillStyle="#ffffff";
+			context.fill(); 
 			//显现所有 
 			show();
 		}
