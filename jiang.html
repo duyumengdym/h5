@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="#"/>
+    <title>刮奖</title>
+    <style>
+	*{
+			padding:0;
+			margin:0;
+	}
+        #box{
+			width: 400px;
+			height: 200px;
+			position: absolute;
+			text-align: center;
+			line-height: 200px;
+			font-size: 80px;
+		}
+		#canvas{
+			position: absolute;
+		}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <canvas id="canvas" width="400" height="200"></canvas>
+</body>
+<script>
+    var div=document.getElementById("box");
+	var canvas=document.getElementById("canvas");
+	var context=canvas.getContext("2d");
+	var width = document.getElementById("box").offsetWidth;
+	var height = document.getElementById("box").offsetHeight;
+	var arr=["一等奖","二等奖","三等奖","谢谢惠顾"];
+	var i=Math.floor(Math.random()*arr.length);
+	div.innerHTML=arr[i];
+	//遮罩层设置灰色
+	context.beginPath();
+	context.fillStyle="#CCCCCC";
+	context.fillRect(0,0,400,200);
+	context.closePath();
+	canvas.onmousedown=function(e){
+		document.onmousemove=function(e){
+			context.globalCompositeOperation = "destination-out";
+			//鼠标涂抹
+			context.beginPath();
+			context.arc(e.clientX-canvas.offsetLeft,e.clientY-canvas.offsetTop,25,0,Math.PI * 2);
+			context.closePath();
+			context.fillStyle="#ffffff";
+			context.fill(); 
+			//显现所有 
+			show();
+		}
+		document.onmouseup=function(){
+			document.onmousedown=null;
+			document.onmousemove=null;
+		}
+	}
+	//获得涂层百分比决定是否全部显现
+	function show() {
+		var data = context.getImageData(0, 0, width, height).data;
+		var num=0;
+		for(var i = 0; i < data.length; i += 4) {
+			// 透明状态
+			if(data[i + 3] == 0) {
+				num++;
+			}
+		}
+		var percent=(num / (data.length / 4) * 100).toFixed(2) + "%";
+		if(parseInt(percent) >=85) {
+			context.clearRect(0, 0, width, height);
+		}
+	}
+</script>
+</html>
