@@ -52,9 +52,8 @@ body{
 #ok{
     border-radius: 3px;
     text-align: center;
-    margin-left: 30%;
-    margin-top:3%;
-    float: left;
+    margin-top:6%;
+    float: right;
     border: 1px solid #cb5405;
     padding-left: 2%;
     padding-right: 2%;
@@ -221,6 +220,7 @@ body{
     color: #ffffff;
     width: 100%;
     display: none;
+    font-size: 3.5vw;
 }
 .de1 div{
     text-align:left;
