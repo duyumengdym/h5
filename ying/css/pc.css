@@ -50,7 +50,7 @@ body{
     font-size: 15px;
 }
 #ok{
-    border-radius: 2px;
+    border-radius: 3px;
     text-align: center;
     margin-left: 30%;
     margin-top:3%;
@@ -198,11 +198,12 @@ body{
     width: 100%;
     top:42.5%;
     display: none;
+    font-size: 3.5vw;
 }
-/* .hainan1 div{
-    font-size:18px;
+.hainan1 div{
+    height: 20%;
     text-align:left;
-} */
+}
 .de{
     background-color: #000000;
     opacity: 0.8;
@@ -221,10 +222,9 @@ body{
     width: 100%;
     display: none;
 }
-/* .de1 div{
-    font-size:18px;
+.de1 div{
     text-align:left;
-} */
+}
 #rightimg{
     position:relative;
 }
