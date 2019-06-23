@@ -284,6 +284,7 @@ body{
     display: none;
 }
 #more button{
+    background-color: #ffffff;
     border:1px solid black;
     border-radius: 3px;
     color:black;
@@ -498,12 +499,16 @@ body{
     margin-bottom: 5%;
     color:#ffffff;
 }
+
 @media(max-width:750px){
     .dao1,.txt p,#car1,#car2,#card,#tail1,.hainan,.de,#qztj, #smyj{
         display: none;
     }
     .smallcar,#small,#no,#newqztj,#newsmyj,#service2{
         display: block;
+    }
+    #big{
+        background-color: #ffffff;
     }
     .txt h1{
         font-size: 20px;
