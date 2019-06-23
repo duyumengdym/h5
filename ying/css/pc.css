@@ -472,7 +472,7 @@ body{
 }
 #footer p{
     float: left;
-    margin-left: 1.35%;
+    margin-left: 1vw;
 }
 .name{
     font-size: 1.5vw!important;
