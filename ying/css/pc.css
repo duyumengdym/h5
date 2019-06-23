@@ -50,15 +50,19 @@ body{
     font-size: 15px;
 }
 #ok{
-    /* border-radius: 10px !important; */
+    border-radius: 2px;
     text-align: center;
-    width: 30%;
-    padding-left: 0%;
-    padding-right: 0%;
+    margin-left: 30%;
+    margin-top:3%;
+    float: left;
+    border: 1px solid #cb5405;
+    padding-left: 2%;
+    padding-right: 2%;
     padding-bottom: 2%;
     padding-top: 2%;
     background-color: #cb5405;
     color: #ffffff;
+    display: none;
     /* font-size: 20px!important; */
 }
 .lunbo{
@@ -195,10 +199,10 @@ body{
     top:42.5%;
     display: none;
 }
-.hainan1 div{
+/* .hainan1 div{
     font-size:18px;
     text-align:left;
-}
+} */
 .de{
     background-color: #000000;
     opacity: 0.8;
@@ -217,10 +221,10 @@ body{
     width: 100%;
     display: none;
 }
-.de1 div{
+/* .de1 div{
     font-size:18px;
     text-align:left;
-}
+} */
 #rightimg{
     position:relative;
 }
@@ -504,6 +508,9 @@ body{
     .txt h1{
         font-size: 20px;
     }
+    #ok{
+        display: block;
+    }
     .middlesearch{
         width: 585px;
         height: 39px;
@@ -521,7 +528,7 @@ body{
         float: left;
     }
     .search1{
-        width: 250px;
+        width: 200px;
         height: 32px;
         float: left;
         font-size: 5px;
@@ -539,10 +546,11 @@ body{
         padding-left:2%;
         padding-top: 2%;
         padding-bottom: 2%;
-        padding-right: 2%;
+        padding-right: 4%;
     }
     .jichang{
-        padding-top: 2% ;
+        padding-top: 3% ;
+        /* margin-left: 3%; */
         padding-left:2%;
     }
     #rmxl{
